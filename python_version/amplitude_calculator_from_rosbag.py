@@ -56,7 +56,11 @@ lateral_error = "/control/trajectory_follower/lateral/diagnostic"
 topic_filter = StorageFilter(topics = [lateral_error])
 reader.set_filter(topic_filter)
 
-reader.seek(1710480652046213440)
+starting_seconds = 0  # set the desired starting time (unit: second)
+
+(topic, data, stamp) = reader.read_next()
+interested_starting_time = stamp + starting_seconds * 10**9
+reader.seek(interested_starting_time)
 
 topic_types = reader.get_all_topics_and_types()
 type_map = {topic_types[i].name: topic_types[i].type for i in range(len(topic_types))}
