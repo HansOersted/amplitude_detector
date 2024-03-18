@@ -51,7 +51,7 @@ def open_reader(path: str):
 
 
 
-reader = open_reader("/home/shen/Desktop/J6_example")
+reader = open_reader("/home/shen/Desktop/test")
 lateral_error = "/control/trajectory_follower/lateral/diagnostic" 
 topic_filter = StorageFilter(topics = [lateral_error])
 reader.set_filter(topic_filter)
